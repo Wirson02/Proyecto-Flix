@@ -1,0 +1,52 @@
+/*---------Reglas por defecto------------*/
+html {
+    scroll-behavior: smooth;
+}
+* {
+    box-sizing: border-box;
+    /* https://fonts.google.com */
+    font-family: 'Quicksand', sans-serif;
+}
+  
+body {
+    margin: 0px;
+    background-color:#202020;
+}
+
+p{
+    margin: 0;
+}
+h4{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+/*----------Clear floats after the columns----------*/
+.slt:after {
+    content: "";
+    display: table;
+    clear: both;
+    /* Si tenemos una fila, que los elementos de abajo empiecen siempre en la misma línea */
+}
+
+/*--- CENTRAR CONTENIDO----*/
+.cnt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-------CLASE DE NAVEGADOR---------- */
+nav{
+    background-color: #2a2a2a ;
+}
+
+/* CLASE DE BOTONES */
+
+.botn{
+    padding: 0.4rem;
+    background-color: #3d0a48;
+    color: #e2b1f6;
+    border-color: #e2b1f6;
+    border-radius: 0.5rem;
+}
