@@ -7,13 +7,29 @@ document.addEventListener('DOMContentLoaded', function() {
 function Inicio(){
     fetch("../proc/proc_home.php")
     .then(sapo => sapo.text())
-    .then(peliculas => document.getElementById('home').innerHTML = peliculas)
-    document.getElementById('name').addEventListener()
+    .then(peliculas =>{ 
+        document.getElementById('home').innerHTML = peliculas
+        addFiltros()
+    })
 }
 
 
+function addFiltros(){
+    document.getElementById('year').addEventListener("change",filtro)
+    document.getElementById('genero').addEventListener("change",filtro)
+    document.getElementById("actor").addEventListener("keyup",filtro)
+}
 
+function deletFiltros(){
+    // document.getElementById('year').removeEventListener()
+}
 
+function filtro() {
+    fetch("../proc/proc_filtro.php")
+    .then(contenido =>{
+        
+    })
+}
 
 
 

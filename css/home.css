@@ -40,6 +40,11 @@
   float: left;
 }
 
+.column-4{
+  width: 25%;
+  float: left;
+}
+
 
 /*-----------------CLASES-PARA-LAS-TARJETAS-Y-SU-ANIMACION-----------------*/
 

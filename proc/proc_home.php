@@ -10,7 +10,7 @@ $sql2 = "SELECT * FROM tbl_generos";
 $sql3 = "SELECT DISTINCT mvi_year FROM bd_stream.tbl_movie order by mvi_year ASC ;";
 
 // PAGINACIÓN RESTRO DE PELICUAS
-$sql4 = "SELECT COUNT(*) as limite FROM tbl_movie;";
+$sql4 = "SELECT (COUNT(*) - 5) AS limite FROM tbl_movie;";
 // $sql5= "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5, ;";
 
 try {
@@ -44,7 +44,7 @@ try {
             <div class="form flex" id="container">
                 <div class="row col-9">
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" placeholder="Busca tu pelicula o actor..." aria-label="City">
+                        <input id="actor" type="text" class="form-control" placeholder="Busca tu pelicula o actor..." aria-label="City">
                     </div>
                     <div class="col-md-3">
                         <select id="genero" name="genero" class="form-control">
@@ -69,15 +69,36 @@ try {
         echo '<option value="'.$year['mvi_year'].'">'.$year['mvi_year'].'</option>';
     }
     echo "</select>
-    </div>";
-    echo '</div>';
+    </div></div></div></div></div>";
 
     // // PAGINACION DEL RESTO DE PELICULAS
 
     echo '<div id="contenido" class="slt">';
     $stmt = $conn->prepare($sql4);
+    $stmt->execute();
+    
+    // Obtener resultados usando fetch asociativo4º
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    // Asignar el valor a la variable $limite
+    $limite = $result['limite'];
+
+    // PAGINACION PARA VER EL RESTO DE PELICULAS OMITIENDO LAS 5 PRIMERAS
+    $sql4 = "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5, $limite";
+    $stmt = $conn->prepare($sql4);
     $stmt -> execute();
-    // $result = $stmt->getresult();
+    $result = $stmt->fetchAll();
+    foreach ($result as $pelicula) {
+        echo '
+        <div class="column-4 flex">
+            <div class="tarjeta">
+                <div class="fondo"></div>
+                <div class="titulo">'.$pelicula['mvi_nom'].'</div>
+                <a><img src="../rsc/movie/'.$pelicula['mvi_porta'].'" class="card-img-top" alt="..."></a><span></span>
+            </div>
+        </div>';
+    }
+
     echo '</div>';
 } catch (Exception $e){
     echo "Error: ". $e->getMessage() ."";
