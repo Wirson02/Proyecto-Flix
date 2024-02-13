@@ -14,21 +14,36 @@ function Inicio(){
 }
 
 
-function addFiltros(){
+function addFiltros()
+{
     document.getElementById('year').addEventListener("change",filtro)
     document.getElementById('genero').addEventListener("change",filtro)
     document.getElementById("actor").addEventListener("keyup",filtro)
 }
 
-function deletFiltros(){
-    // document.getElementById('year').removeEventListener()
+function deletFiltros()
+{
+    document.getElementById('year').removeEventListener("change", filtro);
+    document.getElementById('genero').removeEventListener("change", filtro);
+    document.getElementById("actor").removeEventListener("keyup", filtro);
 }
 
 function filtro() {
-    fetch("../proc/proc_filtro.php")
-    .then(contenido =>{
-        
+    var filtros = {
+        actor: document.getElementById('actor').value,
+        genero:  document.getElementById('genero').value,
+        year: document.getElementById('year').value
+    }
+    fetch("../proc/proc_filtro.php",{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'datos=' + encodeURIComponent(JSON.stringify(filtros))
     })
+
+    .then(contenido =>contenido.text())
+    .then(texto => document.getElementById('contenido').innerHTML = texto)
 }
 
 

@@ -48,7 +48,7 @@ try {
                     </div>
                     <div class="col-md-3">
                         <select id="genero" name="genero" class="form-control">
-                            <option value="" hidden disabled selected>Escoge un genero</option>';
+                            <option value="0" hidden disabled selected>Escoge un genero</option>';
     $stmt = $conn->prepare($sql2);
     $stmt -> execute();
     $result = $stmt->fetchAll();
@@ -64,7 +64,7 @@ try {
 
     echo '<div class="col-md-3">
             <select id="year" name="year" class="form-control">
-                <option value="" hidden disabled selected>Escoge un el año</option>';
+                <option value="0" hidden disabled selected>Escoge un el año</option>';
     foreach ($result as $year) {
         echo '<option value="'.$year['mvi_year'].'">'.$year['mvi_year'].'</option>';
     }

@@ -68,64 +68,6 @@
 
 <!-- INICIO TOP 5 -->
     <div id="home" class="slt">
-            <div class="head flex">
-                <h1>TOP 5</h1>
-            </div>
-            <div class="column-5">
-                <div class="tarjeta">
-                    <div class="fondo"></div>
-                    <div class="titulo">Blade Runner 2045</div>
-                    <a href="#" class=""><img src="./../rsc/movie/blade_Runner.jpg" class="card-img-top" alt="..."></a><span></span>
-                </div>
-            </div>
-            <div class="column-5">
-                <div class="tarjeta">
-                    <div class="fondo"></div>
-                    <div class="titulo">Blade Runner 2045</div>
-                    <a href="#" class=""><img src="./../rsc/movie/blade_Runner.jpg" class="card-img-top" alt="..."></a><span></span>
-                </div>
-            </div>
-            <div class="column-5">
-                <div class="tarjeta">
-                    <div class="fondo"></div>
-                    <div class="titulo">Blade Runner 2045</div>
-                    <a href="#" class=""><img src="./../rsc/movie/blade_Runner.jpg" class="card-img-top" alt="..."></a><span></span>
-                </div>
-            </div>
-            <div class="column-5">
-                <div class="tarjeta">
-                    <div class="fondo"></div>
-                    <div class="titulo">Blade Runner 2045</div>
-                    <a href="#" class=""><img src="./../rsc/movie/blade_Runner.jpg" class="card-img-top" alt="..."></a><span></span>
-                </div>
-            </div>
-            <div class="column-5">
-                <div class="tarjeta">
-                    <div class="fondo"></div>
-                    <div class="titulo">Blade Runner 2045</div>
-                    <a href="#" class=""><img src="./../rsc/movie/blade_Runner.jpg" class="card-img-top" alt="..."></a><span></span>
-                </div>
-            </div>
-        <div class="slt">
-            <div id="search" class="column-1 flex">
-                <div class="form flex" id="container">
-                    <div class="row col-9">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Busca tu pelicula..." aria-label="City">
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" placeholder="State" aria-label="State">
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" placeholder="State" aria-label="State">
-                        </div>
-                        <!-- <div class="col-sm">
-                            <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
     <!-- FIN ETIQUETA #HOME -->
     </div>
 <!---->

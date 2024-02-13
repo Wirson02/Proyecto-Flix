@@ -148,29 +148,30 @@ INSERT INTO `tbl_movie` VALUES (1,'Training Day','Denzel Washington brilla en es
 UNLOCK TABLES;
 
 --
--- Table structure for table `tbl_rodaje`
+-- Table structure for table `tbl_reparto`
 --
 
-DROP TABLE IF EXISTS `tbl_rodaje`;
+DROP TABLE IF EXISTS `tbl_reparto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_rodaje` (
+CREATE TABLE `tbl_reparto` (
   `id_rod` int NOT NULL AUTO_INCREMENT,
   `id_famosos` int DEFAULT NULL,
   `id_movie` int DEFAULT NULL,
   `rod_rol` enum('Director','Actor') DEFAULT 'Actor',
   PRIMARY KEY (`id_rod`),
   KEY `Unic` (`id_famosos`,`id_movie`,`rod_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_rodaje`
+-- Dumping data for table `tbl_reparto`
 --
 
-LOCK TABLES `tbl_rodaje` WRITE;
-/*!40000 ALTER TABLE `tbl_rodaje` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_rodaje` ENABLE KEYS */;
+LOCK TABLES `tbl_reparto` WRITE;
+/*!40000 ALTER TABLE `tbl_reparto` DISABLE KEYS */;
+INSERT INTO `tbl_reparto` VALUES (63,1,30,'Actor'),(38,2,5,'Actor'),(37,3,4,'Actor'),(47,3,17,'Actor'),(67,3,34,'Actor'),(2,4,3,'Actor'),(3,4,3,'Actor'),(1,5,1,'Actor'),(40,6,8,'Actor'),(41,7,9,'Actor'),(42,8,11,'Actor'),(43,9,14,'Actor'),(39,10,7,'Actor'),(58,14,26,'Actor'),(49,15,20,'Actor'),(52,15,22,'Actor'),(48,16,18,'Actor'),(60,16,27,'Actor'),(36,19,4,'Director'),(55,19,24,'Actor'),(44,26,15,'Director'),(45,27,16,'Actor'),(46,28,17,'Director'),(50,31,21,'Director'),(51,32,22,'Director'),(53,33,23,'Director'),(54,34,24,'Director'),(65,34,33,'Director'),(66,34,34,'Director'),(56,35,25,'Actor'),(57,36,26,'Director'),(59,37,27,'Actor'),(61,38,28,'Actor'),(64,38,32,'Actor'),(62,39,29,'Actor');
+/*!40000 ALTER TABLE `tbl_reparto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -209,4 +210,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-09 18:34:59
+-- Dump completed on 2024-02-13 20:50:42
