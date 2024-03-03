@@ -34,7 +34,10 @@
   width: 100%;
   float: left;
 }
-
+.column-2{
+  width: 50%;
+  float: left;
+}
 .column-5{
   width: 20%;
   float: left;
@@ -45,13 +48,32 @@
   float: left;
 }
 
+/*----------------------CSS-PARA-LA-SECCION-DE-PERFIL--------*/
+
+#alerta{
+  width: auto;
+}
+
+#perfil{
+  margin-top: 80px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  padding: 20px; /* Puedes ajustar este valor según tus necesidades de espaciado interno */
+  background-color: #daf3f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0,0.5);
+}
 
 /*-----------------CLASES-PARA-LAS-TARJETAS-Y-SU-ANIMACION-----------------*/
+.contenido{
+  width: 250px;
+  height: 350px;
+}
 
 .tarjeta {
   position: relative;
-  width: 250px;
-  height: 350px;
   background-color: rgba(255, 255, 255, 0.5); /* Fondo más transparente */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -59,6 +81,7 @@
   transition: box-shadow 0.3s ease-in-out;
   margin: 10px;
 }
+
 
 
 .tarjeta:hover {

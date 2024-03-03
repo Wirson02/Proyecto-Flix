@@ -28,11 +28,13 @@ try {
     foreach ($result as $peli) {
         echo '
         <div class="column-5">
-            <div class="tarjeta">
+            <a href="">
+            <div class="tarjeta contenido">
                 <div class="fondo"></div>
                 <div class="titulo">'.$peli['mvi_nom'].'</div>
                 <a><img src="../rsc/movie/'.$peli['mvi_porta'].'" class="card-img-top" alt="..."></a><span></span>
             </div>
+            </a>
         </div>';
         // echo $peli['id'];
     }
@@ -48,7 +50,7 @@ try {
                     </div>
                     <div class="col-md-3">
                         <select id="genero" name="genero" class="form-control">
-                            <option value="0" hidden disabled selected>Escoge un genero</option>';
+                            <option value="0" selected>Todos los generos</option>';
     $stmt = $conn->prepare($sql2);
     $stmt -> execute();
     $result = $stmt->fetchAll();
@@ -64,7 +66,7 @@ try {
 
     echo '<div class="col-md-3">
             <select id="year" name="year" class="form-control">
-                <option value="0" hidden disabled selected>Escoge un el año</option>';
+                <option value="0" selected>Todos los Años</option>';
     foreach ($result as $year) {
         echo '<option value="'.$year['mvi_year'].'">'.$year['mvi_year'].'</option>';
     }
@@ -91,11 +93,13 @@ try {
     foreach ($result as $pelicula) {
         echo '
         <div class="column-4 flex">
-            <div class="tarjeta">
+            <div class="tarjeta contenido">
+            <a href="">
                 <div class="fondo"></div>
                 <div class="titulo">'.$pelicula['mvi_nom'].'</div>
-                <a><img src="../rsc/movie/'.$pelicula['mvi_porta'].'" class="card-img-top" alt="..."></a><span></span>
+                <img src="../rsc/movie/'.$pelicula['mvi_porta'].'" class="card-img-top" alt="..."><span></span>
             </div>
+            </a>
         </div>';
     }
 

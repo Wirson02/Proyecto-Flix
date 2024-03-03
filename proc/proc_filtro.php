@@ -10,12 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $actor_peli = $filtros['actor'];
     $genero = $filtros['genero'];
     $year = $filtros['year'];
-
     $id = 0;
     // echo $actor_peli;
     // echo $genero;
     // echo $year;
-    $mysql = 'SELECT
+    $mysql = 
+    'SELECT
         tbl_movie.id_movie,
         tbl_movie.mvi_nom,
         tbl_movie.mvi_porta,
@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }else{
             $myfil .= 'AND tbl_genero_movie.id_gen = :gen ';
         }
-
     }
 
     if(!$filtros['year']== "" && !$filtros['year'] == 0){
@@ -82,11 +81,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }else {
                 echo '
                 <div class="column-4 flex">
-                <div class="tarjeta">
-                <div class="fondo"></div>
-                <div class="titulo">'.$pelicula['mvi_nom'].'</div>
-                <a><img src="../rsc/movie/'.$pelicula['mvi_porta'].'" class="card-img-top" alt="..."></a><span></span>
-                </div>
+                    <div class="tarjeta contenido">
+                    <a href="">
+                        <div class="fondo"></div>
+                        <div class="titulo">'.$pelicula['mvi_nom'].'</div>
+                        <img src="../rsc/movie/'.$pelicula['mvi_porta'].'" class="card-img-top" alt="..."><span></span>
+                    </div>
+                    </a>
                 </div>';
                 $id = $pelicula['id_movie'];
             }
