@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    Inicio()
+    // Inicio()
 });
 
 
-
+// PAGINACION DE LA PAGINA DE HOME
 function Inicio(){
     fetch("../proc/proc_home.php")
     .then(sapo => sapo.text())
@@ -14,20 +14,33 @@ function Inicio(){
 }
 
 
-function addFiltros()
-{
+// AÑADIMOS EVENTOS A LOS FILTROS DE LA PAGINACIÓN DEL FILTRO PARA QUE SEA
+// AL MOMENTO
+function addFiltros(){
     document.getElementById('year').addEventListener("change",filtro)
     document.getElementById('genero').addEventListener("change",filtro)
     document.getElementById("actor").addEventListener("keyup",filtro)
 }
 
-function deletFiltros()
-{
+// ELIMINAMOS LOS EVENTOS AL QUITAR EL MENU DE HOME
+function deletFiltros(){
     document.getElementById('year').removeEventListener("change", filtro);
     document.getElementById('genero').removeEventListener("change", filtro);
     document.getElementById("actor").removeEventListener("keyup", filtro);
 }
 
+function addForm(){
+    fetch("../proc/proc_form_peli.php")
+    .then(formulario => formulario.text())
+    .then(form => document.getElementById('home').innerHTML = form)
+
+    document.getElementById('genero_peli').addEventListener("keyup",validarForm)
+    document.getElementById('genero').addEventListener("change",validarForm)
+    document.getElementById("actor").addEventListener("keyup",validarForm)
+}
+
+
+// FUNCION PARA QUE LOS FILTROS FUNCIONEN SEGÚN EL CRITERIO QUE PONGA EL USUARIO
 function filtro() {
     var filtros = {
         actor: document.getElementById('actor').value,
@@ -46,12 +59,13 @@ function filtro() {
     .then(texto => document.getElementById('contenido').innerHTML = texto)
 }
 
+function validarForm(){
+    var form = document.getElementById('')
+    var nom = document.getElementById('').value
+    var genero = document.getElementById(''),value
+    var descripcion = document.getElementById('').value
 
-
-
-
-
-
+}
 
 
 
