@@ -69,6 +69,11 @@ function validarForm(){
 
 
 
+
+
+
+
+
 // -------------------ESTILOS NAVBAR-----------------------
 
 /*===== SHOW NAVBAR  =====*/ 
