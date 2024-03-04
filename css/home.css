@@ -61,11 +61,13 @@
   max-width: 100%;
   box-sizing: border-box;
   height: auto;
+  /* color: white; */
   padding: 20px; /* Puedes ajustar este valor según tus necesidades de espaciado interno */
-  background-color: #daf3f0;
+  background-color: #9c89fcc3;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0,0.5);
 }
+
 
 /*-----------------CLASES-PARA-LAS-TARJETAS-Y-SU-ANIMACION-----------------*/
 .contenido{

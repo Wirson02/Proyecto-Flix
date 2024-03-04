@@ -29,7 +29,7 @@
                     </a>
 
                     <div class="nav__list">
-                        <a href="#" class="nav__link active">
+                        <a href="#" id="inicio" class="nav__link active">
                         <i class='bx bxs-home nav__icon'></i>
                             <span class="nav__name">Inicio</span>
                         </a>
@@ -37,7 +37,6 @@
                             <i class='bx bx-search-alt nav__icon'></i>
                             <span class="nav__name">Busqueda</span>
                         </a> -->
-                        
                         <!-- <a href="#" class="nav__link">
                             <i class='bx bx-movie nav__icon' ></i>   
                             <span class="nav__name">Peliculas</span>
@@ -47,14 +46,14 @@
                             <span class="nav__name">Favorites</span>
                         </a>
 
-                        <a href="#" class="nav__link">
+                        <a href="#" id="add" class="nav__link">
                             <i class='bx bx-layer nav__icon'></i>
-                            <span class="nav__name">Administración</span>
+                            <span class="nav__name">Añadir Pelicula</span>
                         </a>
 
                         <a href="#" class="nav__link">
                             <i class='bx bx-cog nav__icon'></i>
-                            <span class="nav__name">Ajustes</span>
+                            <span class="nav__name">Administrar</span>
                         </a>
                     </div>
                 </div>
@@ -69,7 +68,7 @@
     <div id="home" class="slt">
         <div id="perfil" class="slt flex">
             <div class="column-2">
-                <form class="row g-3">
+                <form id="form-addmovie" class="row g-3">
                     <div class="col-md-12">
                         <label for="inputEmail4" class="form-label">Nombre Pelicula</label>
                         <input type="text" class="form-control is-invalid" placeholder="Nombre de tu pelicula" id="nom_peli">
@@ -77,12 +76,12 @@
                     </div>
                     <div class="col-mb-3">
                         <label for="validationTextarea" class="form-label">Sinopsis</label>
-                        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Maximo 200 caracteres" required></textarea>
+                        <textarea class="form-control is-invalid" id="sinopsis" placeholder="Maximo 200 caracteres" required></textarea>
                         <div class="invalid-feedback">Minimo 100 caracteres y Maximo 200</div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputPassword4" id="genero_peli" class="form-label">Genero Principal</label>
-                        <select id="inputState" class="is-invalid form-select">
+                    <div class="col-md-4">
+                        <label for="inputPassword4" class="form-label">Genero Principal</label>
+                        <select id="genero_peli" class="is-invalid form-select">
                             <option selected hidden disabled>Choose...</option>
                             <option value="0">Por Definir</option>
                             <option value="1">Terror</option>
@@ -90,45 +89,35 @@
                         </select>
                         <div class="invalid-feedback">Inserta el nombre de la pelicula</div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputCity" class="form-label">City</label>
-                        <input type="text" class="form-control is-invalid" id="inputCity">
-                        <div class="invalid-feedback">Inserta el nombre de la pelicula</div>
-                    </div>
                     <div class="col-md-4">
                     <label for="inputEmail4" class="form-label">Año de Estreno</label>
-                        <input type="text" class="form-control is-invalid" placeholder="Insertar Año" id="nom_peli">
+                        <input type="number" class="form-control is-invalid" placeholder="Insertar Año" id="year_peli">
                         <div class="invalid-feedback">Revisa los valores insertados</div>
                     </div>
                     <div class="col-md-4">
                     <label for="inputEmail4" class="form-label">Duración</label>
-                        <input type="text" class="form-control is-invalid" placeholder="Duracion en minutos " id="nom_peli">
+                        <input type="number" class="form-control is-invalid" placeholder="Duracion en minutos " id="dur_peli">
                         <div class="invalid-feedback">Revisa los valores insertados</div>
                     </div>
                     <div class="col-mb-3">
-                        <input type="file" class="form-control is-invalid" required>
+                    <label for="inputEmail4" class="form-label">Portada</label>
+                        <input type="file" id="portada" class="form-control is-invalid" required>
                         <div class="invalid-feedback">Solo se permite Formatos de Imagen, Campo obligatorio*</div>
                     </div>
                     <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">Check me out</label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" id="añadir" class="btn btn-primary" disabled>Añadir Pelicula</button>
+                        <button type="submit" id="añadir" class="btn btn-primary">Añadir Pelicula</button>
                     </div>
                 </form>
             </div>
             <div class="column-2 flex">
-            <div class="tarjeta contenido">
-            <a href="">
-                <div class="fondo"></div>
-                <div class="titulo"></div>
-                <img src="" class="card-img-top" alt="INSERTA UNA IMAGEN"><span></span>
+                <div class="tarjeta contenido">
+                    <a href=""> 
+                    <div class="fondo"></div>
+                    <div id="titulo" class="titulo">Insertar Titulo</div>
+                    <img src="../rsc/movie/default.jpg" id="img-preview" class="card-img-top" alt="INSERTA UNA IMAGEN"><span></span>
+                </div>
+                </a>
             </div>
-            </a>
-        </div>
         </div>
     </div>
         <!-- FIN ETIQUETA #HOME -->
