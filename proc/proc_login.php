@@ -23,7 +23,7 @@ if ($stm_consulta ->rowCount() == 1) {
         $_SESSION['id'] = $verif['id_user'];
         $_SESSION['nom'] = $verif['user_username'];
         $_SESSION['ape'] = $verif['user_ape'];
-        header('Location: ../home.php');
+        header('Location: ../home.php?start=true');
         exit();
     } else {
         header('Location: ../index.php?loginerror=true');

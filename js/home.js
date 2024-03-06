@@ -1,12 +1,95 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicio()
     eventsNavbar()
+    // Paginacion()
+    const btnLove = document.querySelector('.btn-love');
+    btnLove.addEventListener('click',function(e){
+        if(!this.classList.contains('act')){
+            this.className += " act";
+            let Tl = new TimelineMax({});
+            Tl.to('.fa',0.1,{
+                scale:0,
+                ease:Back.easeNone,
+            })
+            Tl.to('.fa',0.2,{
+                delay:0.1,
+                scale:1.3,
+                color:'#e3274d',
+                ease:Ease.easeOut
+            })
+            Tl.to('.fa',0.2,{
+                scale:1,
+                ease:Ease.easeOut
+            })
+        }else{
+            this.classList.remove('act');
+            TweenMax.set('.fa',{
+                color:'#c0c1c3',
+            })
+        }
+    })
 });
+
+function Paginacion(num) {
+    var url = window.location.href;
+    if (url.indexOf('?') !== -1) {
+        var parametrosGET = url.split('?')[1].split('&');
+        console.log('Variables de GET detectadas:');
+        
+        // Itera sobre los parámetros de consulta y muestra el nombre y el valor
+        for (var i = 0; i < parametrosGET.length; i++) {
+            var parametro = parametrosGET[i].split('=');
+            var nombre = parametro[0];
+            var valor = parametro[1];
+            console.log(nombre + ': ' + valor);
+            if(nombre == "start"){
+                // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
+                deleteGet()
+                // PAGINAMOS EL INICIO
+                Inicio()
+                // PONEMOS LA ALERTA QUE QUERAMOS 
+                alertas(1);
+                return
+            }
+            if (nombre == "id") {
+                console.log("PAGNACION DE LA PELICULA CON SU ID");
+                deleteGet()
+                movie(valor);
+                return
+            }else{
+                // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
+                deleteGet()
+                // PAGINAMOS EL INICIO
+                Inicio()
+                // PONEMOS LA ALERTA QUE QUERAMOS 
+                alertas(2);
+                return
+            }
+        }
+        // Aquí puedes realizar acciones adicionales según tus necesidades
+    } else {
+        Inicio()
+        // console.log('No hay variables de GET en la URL.');
+    }
+}
+
+// LIMPIAR VARIABLES GET DE LA URL
+function deleteGet() {
+    // Modifica la URL sin parámetros de consulta
+    history.pushState({}, document.title, window.location.pathname);
+}
+
 
 // ASIGNACION DE EVENTOS A LOS BOTONES DEL NAV
 function eventsNavbar() {
+    // FUNCIONES DE PAGINACION
     document.getElementById('add').addEventListener("click",addForm)
     document.getElementById('inicio').addEventListener("click",Inicio)
+
+
+
+    // EVENTO PARA ELIMINAR VARIABLES DE GET
+    document.getElementById('add').addEventListener("click",deleteGet)
+    document.getElementById('inicio').addEventListener("click",deleteGet)
 }
 
 
@@ -17,6 +100,25 @@ function Inicio(){
     .then(peliculas =>{ 
         document.getElementById('home').innerHTML = peliculas
         addFiltros()
+    })
+}
+
+// PAGINACION PELICULA EN CONCRETO CON SU ID
+function movie(id) {
+    // ID pelicula por JSON
+    var pelicula = {
+        id: id
+    }
+    fetch("../proc/proc_movie.php",{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'datos=' + encodeURIComponent(JSON.stringify(pelicula))
+    })
+    .then(contenido =>contenido.text())
+    .then(texto => {
+        document.getElementById('home').innerHTML = texto
     })
 }
 
@@ -36,6 +138,33 @@ function deletFiltros(){
     document.getElementById("actor").removeEventListener("keyup", filtro);
 }
 
+
+
+function alertas(num) {
+    if(num == 1){
+        var icon = ""
+        var title = "Bienvenid@ y Disfruta"
+    }else{
+        var icon = "warning"
+        var title = "No reconocemos la URL"
+    }
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: icon,
+        title: title
+    });
+}
 
 
 // FUNCION PARA QUE LOS FILTROS FUNCIONEN SEGÚN EL CRITERIO QUE PONGA EL USUARIO
@@ -64,8 +193,8 @@ function addForm(){
     .then(form =>{
         document.getElementById('home').innerHTML = form
         document.getElementById('nom_peli').addEventListener("keyup",FormNombre)
+        document.getElementById('sinopsis').addEventListener("blur",FormSinopsis)
         document.getElementById('portada').addEventListener("change",FormPortada)
-
 
     })
     // document.getElementById('genero').addEventListener("change",validarForm)
@@ -81,17 +210,21 @@ function validarForm(){
 }
 
 function FormSinopsis(){
-    var sinopsis = document.getElementById('sinopsis')
+    var nom = document.getElementById('sinopsis')
     console.log(nom.value.length)
     if (nom.value === "") {
         nom.classList.remove('is-valid');
         nom.classList.add('is-invalid');
     } else {
         if (nom.value.length >= 100) {
-            
+            nom.classList.remove('is-invalid');
+            nom.classList.add('is-valid');
+        }else{
+            nom.classList.remove('is-valid');
+            nom.classList.add('is-invalid');
         }
-        nom.classList.remove('is-invalid');
-        nom.classList.add('is-valid');
+        // nom.classList.remove('is-invalid');
+        // nom.classList.add('is-valid');
     }
 }
 
@@ -113,7 +246,7 @@ function FormPortada(event) {
     const file = input.files[0];
     if (file) {
         // Verifica si el archivo tiene una extensión de imagen permitida
-        const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        const allowedExtensions = ['jpg', 'jpeg', 'png'];
         const fileExtension = file.name.split('.').pop().toLowerCase();
         if (allowedExtensions.includes(fileExtension)) {
             const reader = new FileReader();
@@ -123,7 +256,12 @@ function FormPortada(event) {
             reader.readAsDataURL(file);
         } else {
             // Muestra un mensaje de error si el archivo no es una imagen permitida
-            alert('Por favor, selecciona un archivo de imagen válido (jpg, jpeg, png, gif).');
+            Swal.fire({
+                title: "Archivo Incompatible",
+                text: "Por favor, seleccione un archivo de imagen válido (jpg, jpeg, png)",
+                icon: "warning"
+            });
+            // alert('Por favor, selecciona un archivo de imagen válido (jpg, jpeg, png, gif).');
             input.value = ''; // Limpia el valor del input para evitar que se cargue el archivo no permitido
             previewImg.src = '../rsc/movie/default.jpg'; // También puedes limpiar la vista previa si ya hay una imagen cargada
         }

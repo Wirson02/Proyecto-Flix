@@ -279,6 +279,24 @@ a{
   background-color: var(--white-color);
 }
 
+/* BOTON DE LIKE EN LA PELICULA */
+.btn-love{
+  /* border: white 15px solid; */
+  border-radius: 20px;
+  /* margin:20% auto; */
+  cursor:pointer;
+  background:transparent;
+  border:none; /* RECORADMOS QUE ESTA DENTRO DE UN BOTON Y QUITAMOS LOS ESTILOS*/
+  font-size:50px; /* TAMAÑO DEL BOTON*/
+  /* outline:none; */
+  color:#c0c1c3; /* ESTILO DE BOTON DESACTIVADO  */
+  /* position:relative; */
+  .fa {
+      /* position:relative; */
+      z-index:1;
+  }
+}
+
 /* ===== MEDIA QUERIES=====*/
 @media screen and (min-width: 768px){
   body{
@@ -316,5 +334,4 @@ a{
   }
 }
 
-
-
+/*  */

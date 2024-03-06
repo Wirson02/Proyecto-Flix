@@ -1,0 +1,17 @@
+body {
+    text-align:center;
+  }
+  .btn-love{
+    margin:20% auto;
+    cursor:pointer;
+    background:transparent;
+    border:none;
+    font-size:50px;
+    outline:none;
+    color:#c0c1c3;
+    position:relative;
+    .fa {
+        position:relative;
+        z-index:1;
+    }
+}
