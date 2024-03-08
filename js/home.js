@@ -114,7 +114,7 @@ function movie(id) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: 'datos=' + encodeURIComponent(JSON.stringify(pelicula))
+        body: 'pelicula=' + encodeURIComponent(JSON.stringify(pelicula))
     })
     .then(contenido =>contenido.text())
     .then(texto => {

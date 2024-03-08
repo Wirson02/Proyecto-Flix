@@ -69,24 +69,32 @@
 <!-- FIN NAVBAR -->
 <!-- INICIO TOP 5 -->
     <div id="home" class="slt">
-            <div class="hstack gap-3">
-                <div class="p-2 ms-auto">-</div>
-            </div>
-            <div class="column-2 flex">
-                <div class="hstack gap-3">
-                    <div class="p-2"><h1>BLADE RUNNER</h1></div>
-                    <div class="p-2 ms-auto"></div>
-                    <div class="vr"></div>
-                    <div class="p-2 ms-auto"><button id="movie" value="1" class="btn-love"><span class="fa fa-heart"></span></button></div>
+        <div id="movie">
+            <div class="container overflow-hidden">
+                <div class="row gy-5">
+                    <div class="col-3 p-3 mb-2">
+                    <!-- <div class="col-6 col-md-4"> -->
+                        <div class="tarjeta contenido">
+                            <img src="../rsc/movie/default.jpg" class="card-img-top"><span></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 p-3">
+                    <!-- <div class="col-sm-6 col-md-8"> -->
+                        <div id="movie-card">
+                            <div class="hstack gap-3">
+                                <div class="p-2"><h2>Blade Runner 2049</h2></div>
+                                <div class="p-2 ms-auto"><button id="movie" value="1" class="btn-love"><span class="fa fa-heart"></span></button></div>
+                                <!-- <div class="p-2">Second item</div> -->
+                            </div>
+                            <p><strong>2019</strong> / <strong>Accion</strong> / <strong>120min</strong></p>
+                            <h3>Sinopsis</h3>
+                            <p>SLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURA</p>
+                            <div class="position-absolute end-1"><button>Ver Pelicula</button></div>
+                        </div>
+                    </div>
                 </div>
-                <!-- <form action="" method="post"></form> -->
             </div>
-
-            <div class="column-2 flex">
-                <div class="tarjeta contenido">
-                    <img src="../rsc/movie/default.jpg" id="img-preview" class="card-img-top" alt="INSERTA UNA IMAGEN"><span></span>
-                </div>
-            </div>
+        </div>
     </div>
         <!-- FIN ETIQUETA #HOME -->
 <!---->
