@@ -29,7 +29,6 @@ if (filter_has_var(INPUT_POST, 'login')) {
         }
     }
     if ($empty!=""){
-        echo "hay campos vacios";
         $variables = array('user' => $user);
         $error = http_build_query($variables);
         header("Location: ./../index.php".$empty."&".$error);
@@ -54,7 +53,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
         }
     }else{
         $user = $_POST["user"];
-        if(strlen($user)>=15){
+        if(strlen($user)>=40){
             if (!$errores){
                 $errores .="?userMaxLength=true";
             } else {

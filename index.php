@@ -26,7 +26,7 @@
                 <?php  if (isset($_GET['signup'])) {echo "<span class='alert'>Porfavor revisa los datos del usuario a crear</span>";}?>
                 <?php  if (isset($_GET['userMaxLength'])) {echo "<span class='alert'>el nombre de usuario no pueden ser mas de 15 caracteres</span>";}?>
                 <?php  if (isset($_GET['userVacio'])) {echo "<span class='alert'>El campo usuario es obligatorio</span>";}?>
-                <input type="text" name="user" id="user" placeholder="Usuario" value="<?php if(isset($_GET["user"])){echo $_GET["user"];} ?>">
+                <input type="text" name="user" id="user" placeholder="Correo Electronico" value="<?php if(isset($_GET["user"])){echo $_GET["user"];} ?>">
                 <?php  if (isset($_GET['nombreVacio'])) {echo "<span class='alert'>El campo nombre es obligatorio</span>";}?>
                 <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php if(isset($_GET["nombre"])){echo $_GET["nombre"];} ?>">
                 <?php  if (isset($_GET['apellidoVacio'])) {echo "<span class='alert'>El campo apellido es obligatorio</span>";}?>
@@ -42,7 +42,7 @@
             <form action="./proc/proc_val.php" method="post">
                 <h1>Iniciar Sesion</h1>
                 <?php   if (isset($_GET['loginerror'])) {echo "<span class='alert'>Porfavor revisa los datos al iniciar sesión</span>";}?>
-                <input type="text" name="user" id="user" placeholder="Usuario" <?php if(isset($_GET['userlog'])){echo "value = ".$_GET['user'];}?>>
+                <input type="text" name="user" id="user" placeholder="Correo Electronico" <?php if(isset($_GET['userlog'])){echo "value = ".$_GET['user'];}?>>
                 <input type="password" name="pwd" id="pwd" placeholder="Contraseña">
                 <button type="submit" value="login" name="login">Inicia Sesion</button>
             </form>

@@ -28,7 +28,7 @@ try {
         exit();
     }else{
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sqlInsert=  "INSERT INTO tbl_user (id_user, usr_mail, usr_nom, usr_ape, usr_pwd) VALUES (NULL, :user,:nom,:ape,:pwd);";
+        $sqlInsert=  "INSERT INTO tbl_user (usr_mail, usr_nom, usr_ape, usr_pwd) VALUES (:user,:nom,:ape,:pwd);";
         $stmt2 = $conn -> prepare($sqlInsert);
         $stmt2 -> bindParam(':user',$user);
         $stmt2 -> bindParam(':nom',$nombre);
@@ -38,7 +38,7 @@ try {
         $stmt1 -> closeCursor();
         $stmt2 -> closeCursor();
         // echo "Usuario creadado correctamente";
-        header('Location: '.'../index.php?espera=true');
+        header('Location: '.'../index.php?alert=1');
     }
 
 } catch (Exception $e) {

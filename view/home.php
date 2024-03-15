@@ -28,32 +28,25 @@
                 <div>
                     <a href="#" class="nav__logo">
                         <i class='bx bx-camera-movie nav__logo-icon'></i>
-                        <span class="nav__logo-name">NETFLIX</span>
+                        <span class="nav__logo-name">PROYFLIX</span>
                     </a>
-
                     <div class="nav__list">
                         <a href="#" id="inicio" class="nav__link active">
-                        <i class='bx bxs-home nav__icon'></i>
+                            <i class='bx bxs-home nav__icon'></i>
                             <span class="nav__name">Inicio</span>
                         </a>
-                        <!-- <a href="#search" class="nav__link">
-                            <i class='bx bx-search-alt nav__icon'></i>
-                            <span class="nav__name">Busqueda</span>
-                        </a> -->
-                        <!-- <a href="#" class="nav__link">
-                            <i class='bx bx-movie nav__icon' ></i>   
-                            <span class="nav__name">Peliculas</span>
-                        </a> -->
                         <a href="#" class="nav__link">
                             <i class='bx bx-heart nav__icon'></i>
                             <span class="nav__name">Favorites</span>
                         </a>
-
-                        <a href="#" id="add" class="nav__link">
+                        <a href="#" id="crud" class="nav__link">
                             <i class='bx bx-layer nav__icon'></i>
+                            <span class="nav__name">Administrador</span>
+                        </a>
+                        <a href="#search" id="add" class="nav__link">
+                            <i class='bx bx-layer-plus nav__icon' ></i>
                             <span class="nav__name">Añadir Pelicula</span>
                         </a>
-
                         <a href="#" class="nav__link">
                             <i class='bx bx-cog nav__icon'></i>
                             <span class="nav__name">Administrar</span>

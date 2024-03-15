@@ -194,15 +194,48 @@ function addForm(){
         document.getElementById('home').innerHTML = form
         document.getElementById('nom_peli').addEventListener("keyup",FormNombre)
         document.getElementById('sinopsis').addEventListener("blur",FormSinopsis)
+        document.getElementById('genero_peli').addEventListener("change",FormGenero)
+        document.getElementById('dur_peli').addEventListener("keyup",FormDur)
+        document.getElementById('year_peli').addEventListener("keyup",Formyear)
         document.getElementById('portada').addEventListener("change",FormPortada)
-
     })
-    // document.getElementById('genero').addEventListener("change",validarForm)
-    // document.getElementById("actor").addEventListener("keyup",validarForm)
 }
 
+function FormGenero() {
+    var genero = document.getElementById('genero_peli')
+    if (genero.value == 0 && genero.value == "0") {
+        genero.classList.remove('is-valid');
+        genero.classList.add('is-invalid');
+    } else {
+        genero.classList.remove('is-invalid');
+        genero.classList.add('is-valid');
+    }
+}
+
+function FormDur() {
+    var duracion = document.getElementById('dur_peli')
+    if (duracion.value < 60) {
+        duracion.classList.remove('is-valid');
+        duracion.classList.add('is-invalid');
+    } else {
+        duracion.classList.remove('is-invalid');
+        duracion.classList.add('is-valid');
+    }
+}
+
+function Formyear() {
+    var year = document.getElementById('year_peli')
+    if (year.value < 1896) {
+        year.classList.remove('is-valid');
+        year.classList.add('is-invalid');
+    } else {
+        duracion.classList.remove('is-invalid');
+        duracion.classList.add('is-valid');
+    }
+}
+
+
 function validarForm(){
-    var form = document.getElementById('form-addmovie')
     var nom = document.getElementById('nom_peli').value
     var genero = document.getElementById('genero_peli'),value
     var sinopsis = document.getElementById('sinopsis').value
@@ -211,7 +244,6 @@ function validarForm(){
 
 function FormSinopsis(){
     var nom = document.getElementById('sinopsis')
-    console.log(nom.value.length)
     if (nom.value === "") {
         nom.classList.remove('is-valid');
         nom.classList.add('is-invalid');
@@ -261,6 +293,7 @@ function FormPortada(event) {
                 text: "Por favor, seleccione un archivo de imagen válido (jpg, jpeg, png)",
                 icon: "warning"
             });
+            
             // alert('Por favor, selecciona un archivo de imagen válido (jpg, jpeg, png, gif).');
             input.value = ''; // Limpia el valor del input para evitar que se cargue el archivo no permitido
             previewImg.src = '../rsc/movie/default.jpg'; // También puedes limpiar la vista previa si ya hay una imagen cargada
