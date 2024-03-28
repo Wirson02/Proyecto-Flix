@@ -3,12 +3,10 @@ include_once('conexion.php');
 
 // MAYOR NUMERO DE LIKES
 $sql = "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5;";
-
 // OPCIONES DE TODOS LOS GENEROS DISPONIBLES
 $sql2 = "SELECT * FROM tbl_generos";
 // OPCIONES DE AÑOS DE TODAS LAS PELICUALS QUE TENEMOS DISPONIBLES
 $sql3 = "SELECT DISTINCT mvi_year FROM bd_stream.tbl_movie order by mvi_year ASC ;";
-
 // PAGINACIÓN RESTRO DE PELICUAS
 $sql4 = "SELECT (COUNT(*) - 5) AS limite FROM tbl_movie;";
 // $sql5= "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5, ;";
@@ -32,7 +30,7 @@ try {
             <div class="tarjeta contenido">
                 <div class="fondo"></div>
                 <div class="titulo">'.$peli['mvi_nom'].'</div>
-                <a><img src="../rsc/movie/'.$peli['mvi_porta'].'" class="card-img-top" alt="..."></a><span></span>
+                <a href="home.php?id='.$peli['id_movie'].'"><img src="../rsc/movie/'.$peli['mvi_porta'].'" class="card-img-top" alt="..."></a><span></span>
             </div>
             </a>
         </div>';
@@ -94,7 +92,7 @@ try {
         echo '
         <div class="column-4 flex">
             <div class="tarjeta contenido">
-            <a href="">
+            <a href="home.php?id='.$pelicula['id_movie'].'">
                 <div class="fondo"></div>
                 <div class="titulo">'.$pelicula['mvi_nom'].'</div>
                 <img src="../rsc/movie/'.$pelicula['mvi_porta'].'" class="card-img-top" alt="..."><span></span>

@@ -26,20 +26,20 @@
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div>
-                    <a href="#" class="nav__logo">
+                    <a href="" class="nav__logo">
                         <i class='bx bx-camera-movie nav__logo-icon'></i>
                         <span class="nav__logo-name">PROYFLIX</span>
                     </a>
                     <div class="nav__list">
-                        <a href="#" id="inicio" class="nav__link active">
+                        <a id="inicio" class="nav__link active">
                             <i class='bx bxs-home nav__icon'></i>
                             <span class="nav__name">Inicio</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="" class="nav__link">
                             <i class='bx bx-heart nav__icon'></i>
                             <span class="nav__name">Favorites</span>
                         </a>
-                        <a href="#" id="crud" class="nav__link">
+                        <a href="" id="crud" class="nav__link">
                             <i class='bx bx-layer nav__icon'></i>
                             <span class="nav__name">Administrador</span>
                         </a>
@@ -62,32 +62,6 @@
 <!-- FIN NAVBAR -->
 <!-- INICIO TOP 5 -->
     <div id="home" class="slt">
-        <div id="movie">
-            <div class="container overflow-hidden">
-                <div class="row gy-5">
-                    <div class="col-3 p-3 mb-2">
-                    <!-- <div class="col-6 col-md-4"> -->
-                        <div class="tarjeta contenido">
-                            <img src="../rsc/movie/default.jpg" class="card-img-top"><span></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-9 p-3">
-                    <!-- <div class="col-sm-6 col-md-8"> -->
-                        <div id="movie-card">
-                            <div class="hstack gap-3">
-                                <div class="p-2"><h2>Blade Runner 2049</h2></div>
-                                <div class="p-2 ms-auto"><button id="movie" value="1" class="btn-love"><span class="fa fa-heart"></span></button></div>
-                                <!-- <div class="p-2">Second item</div> -->
-                            </div>
-                            <p><strong>2019</strong> / <strong>Accion</strong> / <strong>120min</strong></p>
-                            <h3>Sinopsis</h3>
-                            <p>SLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURAACOMPAÑA A RAYAN GHOSLING EN UNA AVENTURA</p>
-                            <div class="position-absolute end-1"><button>Ver Pelicula</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
         <!-- FIN ETIQUETA #HOME -->
 <!---->

@@ -23,7 +23,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
         $pwd=$_POST['pwd'];
     } else {
         if (!$empty){
-           $empty .="?loginerror=true";
+            $empty .="?loginerror=true";
         } else {
             $empty .="&loginerror=true";        
         }

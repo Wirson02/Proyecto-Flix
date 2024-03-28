@@ -15,7 +15,7 @@ if ($stm_consulta ->rowCount() == 1) {
     // echo "existe usuario";
     // echo "<br>";
     if (password_verify($pwd, $verif['usr_pwd'])) {
-        // ROLLES 1 = EN ESPERA / 2 = DESHABILITADO / 3 = ACTIVO (USUARIO NORMAL) / 4 = ADMIN
+        // --- ROLLES --- /  1 = EN ESPERA / 2 = DESHABILITADO / 3 = ACTIVO (USUARIO NORMAL) / 4 = ADMIN
         if ($verif['usr_rol'] == 1) {
             header('Location: ../index.php?alerta=1');
             exit();
@@ -31,14 +31,14 @@ if ($stm_consulta ->rowCount() == 1) {
             $_SESSION['nom'] = $verif['usr_nom'];
             $_SESSION['ape'] = $verif['usr_ape'];
             $_SESSION['rol'] = $verif['usr_rol'];
-            header('Location: ../home.php?alerta=2');
+            header('Location: ./../view/home.php?start');
             exit();
         }
         // echo 'Password is valid!';
         // echo "<br>";
         // echo "Acceso al chat";
 
-        header('Location: ../home.php?start=true');
+        header('Location: ../index.php?loginerror=true');
         exit();
     } else {
         header('Location: ../index.php?loginerror=true');

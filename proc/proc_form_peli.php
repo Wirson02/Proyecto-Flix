@@ -17,7 +17,7 @@ try {
                 <div class="col-mb-3">
                     <label for="validationTextarea" class="form-label">Sinopsis</label>
                     <textarea class="form-control" id="sinopsis" placeholder="Maximo 200 caracteres" required></textarea>
-                    <div class="invalid-feedback">Minimo 100 caracteres y Maximo 200</div>
+                    <div class="invalid-feedback">Minimo 250 caracteres y Maximo 600 caracetes</div>
                 </div>
                 <div class="col-md-4">
                     <label for="inputPassword4" class="form-label">Genero Principal</label>

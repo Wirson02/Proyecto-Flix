@@ -274,6 +274,10 @@ a{
   padding-left: calc(var(--nav-width) + 1rem);
 }
 
+.act{
+  color: #e3274d;
+}
+
 /*Active links*/
 .active{
   color: var(--white-color);

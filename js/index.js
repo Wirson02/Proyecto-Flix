@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     Animaciones()//
-
 });
 
 
 function Animaciones() {
     document.getElementById('signUp').addEventListener('click', () => {
-		document.getElementById('container').classList.add("right-panel-active");
+        document.getElementById('container').classList.add("right-panel-active");
 	});
 
 	document.getElementById('signIn').addEventListener('click', () => {
@@ -17,13 +16,11 @@ function Animaciones() {
 function ValForm() {
 }
 
-function Paginacion(num) {
+
+function Paginacion() {
     var url = window.location.href;
     if (url.indexOf('?') !== -1) {
         var parametrosGET = url.split('?')[1].split('&');
-        console.log('Variables de GET detectadas:');
-        
-        // Itera sobre los parámetros de consulta y muestra el nombre y el valor
         for (var i = 0; i < parametrosGET.length; i++) {
             var parametro = parametrosGET[i].split('=');
             var nombre = parametro[0];
@@ -51,10 +48,8 @@ function Paginacion(num) {
                 return
             }
         }
-        // Aquí puedes realizar acciones adicionales según tus necesidades
     } else {
         Inicio()
-        // console.log('No hay variables de GET en la URL.');
     }
 }
 // LIMPIAR VARIABLES GET DE LA URL
