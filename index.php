@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
     <title>Giatchat</title>
 </head>
 <body>
-<?php 
-        if(isset($_GET)){
-            if(!isset($_GET['userExist'])){
-                echo"<script>btn = document.getElementById('signUp');
-                btn.click();
-                </script>";
-            }
-        }
-    ?>
     <h2>Bienvenido a Proyecto Fenix</h2>
     <div class="container <?php if (isset($_GET['nombreVacio']) || isset($_GET['nombre'])) {echo" right-panel-active";}else{}?>" id="container">
         <div class="form-container sign-up-container">

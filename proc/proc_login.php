@@ -38,13 +38,13 @@ if ($stm_consulta ->rowCount() == 1) {
         // echo "<br>";
         // echo "Acceso al chat";
 
-        header('Location: ../index.php?loginerror=true');
+        header('Location: ../index.php?alerta=3');
         exit();
     } else {
-        header('Location: ../index.php?loginerror=true');
+        header('Location: ../index.php?alerta=3');
         exit();
     }
 } else {
-    header('Location: ../index.php?noencotro=true'); // Usuario no encontrado
+    header('Location: ../index.php?alerta=3'); // Usuario no encontrado
     exit();
 }

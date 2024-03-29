@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     eventsNavbar()
-    Paginacion()
 });
 
-function Paginacion(num) {
+function Paginacion() {
     var url = window.location.href;
     if (url.indexOf('?') !== -1) {
         var parametrosGET = url.split('?')[1].split('&');
@@ -17,7 +16,7 @@ function Paginacion(num) {
             console.log(nombre + ': ' + valor);
             if(nombre == "start"){
                 // PAGINAMOS EL INICIO
-                Inicio()
+                // Inicio()
                 // PONEMOS LA ALERTA QUE QUERAMOS 
                 alertas(1);
                 deleteGet()
@@ -159,10 +158,10 @@ function deletFiltros(){
 function alertas(num) {
     if(num == 1){
         var icon = ""
-        var title = "Bienvenid@ y Disfruta"
+        var title = "Bienvendio"
     }else{
         var icon = "warning"
-        var title = "No reconocemos la URL"
+        var title = "URL desconocida, vigila por donde vas"
     }
 
     const Toast = Swal.mixin({

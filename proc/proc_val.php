@@ -13,7 +13,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
         $user=$_POST['user'];
     } else {
         if (!$empty){
-            $empty .="?loginerror=true";
+            $empty .="&loginerror=true";
         } else {
             $empty .="&loginerror=true";        
         }
@@ -23,7 +23,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
         $pwd=$_POST['pwd'];
     } else {
         if (!$empty){
-            $empty .="?loginerror=true";
+            $empty .="&loginerror=true";
         } else {
             $empty .="&loginerror=true";        
         }
@@ -31,7 +31,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
     if ($empty!=""){
         $variables = array('user' => $user);
         $error = http_build_query($variables);
-        header("Location: ./../index.php".$empty."&".$error);
+        header("Location: ./../index.php?alerta=2".$empty."&".$error);
         exit();
     }else{
         echo"<form id='login' action='proc_login.php' method='POST'>";
@@ -47,7 +47,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
     $errores = "";
     if(validaCampoVacio($_POST["user"])){
         if (!$errores){
-            $errores .="?userVacio=true";
+            $errores .="&userVacio=true";
         } else {
             $errores .="&userVacio=true";        
         }
@@ -55,7 +55,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
         $user = $_POST["user"];
         if(strlen($user)>=40){
             if (!$errores){
-                $errores .="?userMaxLength=true";
+                $errores .="&userMaxLength=true";
             } else {
                 $errores .="&userMaxLength=true";        
             }
@@ -64,7 +64,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
 
     if(validaCampoVacio($_POST["nombre"])){
         if (!$errores){
-            $errores .="?nombreVacio=true";
+            $errores .="&nombreVacio=true";
         } else {
             $errores .="&nombreVacio=true";        
         }
@@ -74,7 +74,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
 
     if(validaCampoVacio($_POST["apellido"])){
         if (!$errores){
-            $errores .="?apellidoVacio=true";
+            $errores .="&apellidoVacio=true";
         } else {
             $errores .="&apellidoVacio=true";        
         }
@@ -84,7 +84,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
 
     if(validaCampoVacio($_POST["pwd1"])){
         if (!$errores){
-            $errores .="?pwd1Vacio=true";
+            $errores .="&pwd1Vacio=true";
         } else {
             $errores .="&pwd1Vacio=true";        
         }
@@ -94,7 +94,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
 
     if(validaCampoVacio($_POST["pwd2"])){
         if (!$errores){
-            $errores .="?pwd2Vacio=true";
+            $errores .="&pwd2Vacio=true";
         } else {
             $errores .="&pwd2Vacio=true";        
         }
@@ -107,7 +107,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
             $pwdFinal = $pwd1;
         }else{
             if (!$errores){
-                $errores .="?pwdUnmatch=true";
+                $errores .="&pwdUnmatch=true";
             } else {
                 $errores .="&pwdUnmatch=true";        
             }
@@ -120,7 +120,7 @@ if (filter_has_var(INPUT_POST, 'login')) {
             'apellido' => $apellido,
         );
         $datosDevueltos=http_build_query($datosRecibidos);
-        header("Location: ../index.php". $errores. "&signup=true&". $datosDevueltos);
+        header("Location: ../index.php?alerta=3". $errores. "&signup=true&". $datosDevueltos);
         exit();
     }else{
         echo'<form action="./proc_registro.php" method="post" id="RegistroCheck">

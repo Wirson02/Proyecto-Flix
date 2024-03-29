@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    Animaciones()//
+    Animaciones()//´
+    Paginacion()
 });
 
 
@@ -28,15 +29,15 @@ function Paginacion() {
             console.log(nombre + ': ' + valor);
             if(nombre == "alerta"){
                 // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
-                deleteGet()
+                // deleteGet()
+                console.log("deteccion de alertas, ".valor);
                 // PONEMOS LA ALERTA QUE QUERAMOS 
-                alertas(1);
+                alertas(valor);
                 return
             }
             if (nombre == "id") {
                 console.log("PAGNACION DE LA PELICULA CON SU ID");
                 deleteGet()
-                movie(valor);
                 return
             }else{
                 // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
@@ -48,8 +49,6 @@ function Paginacion() {
                 return
             }
         }
-    } else {
-        Inicio()
     }
 }
 // LIMPIAR VARIABLES GET DE LA URL
@@ -59,5 +58,32 @@ function deleteGet() {
 }
 
 function alertas(num) {
-	
+    if(num == 1){
+        var icon = "info"
+        var title = "Estamos valorando tu peticion de acceso"
+    }
+    if (num == 2) {
+        var icon = "error"
+        var title = "Cuenta Desahbilitada, consulte con un administrador"
+    }
+    if (num == 3) {
+        var icon = "warning"
+        var title = "Revisa las credenciales de inicio de session"
+    }
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: icon,
+        title: title
+    });
 }
