@@ -8,7 +8,7 @@ try {
     echo '
     <div id="perfil" class="slt flex">
         <div class="column-2">
-            <form id="form-addmovie" class="row g-3">
+            <form id="form-addmovie" enctype="multipart/form-data" action="../proc/proc_add_peli.php" method="post" class="row g-3">
                 <div class="col-md-12">
                     <label for="inputEmail4" class="form-label">Nombre Pelicula</label>
                     <input type="text" class="form-control" placeholder="Nombre de tu pelicula" id="nom_peli" name="nom_peli">
@@ -47,7 +47,7 @@ try {
         <div class="invalid-feedback">Solo se permite Formatos de Imagen, Campo obligatorio*</div>
     </div>
     <div class="col-12">
-        <button type="submit" id="añadir" class="btn btn-primary" disabled>Añadir Pelicula</button>
+        <button type="submit" id="añadir" class="btn btn-primary">Añadir Pelicula</button>
     </div>
 </form>
 </div>

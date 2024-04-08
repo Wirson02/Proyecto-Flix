@@ -42,7 +42,7 @@ if (!isset($_SESSION['id'])) {
                             <i class='bx bxs-home nav__icon'></i>
                             <span class="nav__name">Inicio</span>
                         </a>
-                        <a href="" class="nav__link">
+                        <a id="favoritos" class="nav__link">
                             <i class='bx bx-heart nav__icon'></i>
                             <span class="nav__name">Favoritos</span>
                         </a>

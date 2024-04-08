@@ -53,12 +53,22 @@ function deleteGet() {
 function eventsNavbar() {
     // FUNCIONES DE PAGINACION
     document.getElementById('inicio').addEventListener("click",Inicio)
+    document.getElementById('favoritos').addEventListener("click",favlist)
     document.getElementById('add').addEventListener("click",addForm)
 
     // EVENTO PARA ELIMINAR VARIABLES DE GET
     // document.getElementById('add').addEventListener("click",deleteGet)
     // document.getElementById('inicio').addEventListener("click",deleteGet)
 }
+
+function favlist() {
+    fetch("../proc/proc_fav.php")
+    .then(sapo => sapo.text())
+    .then(peliculas =>{ 
+        document.getElementById('home').innerHTML = peliculas
+    })
+}
+
 
 function like_style() {
     const btnLove = document.querySelector('.btn-love');
@@ -91,6 +101,7 @@ function like_style() {
 
 // PAGINACION DE LA PAGINA DE HOME
 function Inicio(){
+    // deleteGet()
     fetch("../proc/proc_home.php")
     .then(sapo => sapo.text())
     .then(peliculas =>{ 
@@ -159,10 +170,6 @@ function alertas(num) {
     if(num == 1){
         var icon = ""
         var title = "Bienvendio"
-
-    }else{
-        var icon = "warning"
-        var title = "URL desconocida, vigila por donde vas"
     }
 
     const Toast = Swal.mixin({
