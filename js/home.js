@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    Paginacion()
     eventsNavbar()
 });
 
@@ -7,7 +8,6 @@ function Paginacion() {
     if (url.indexOf('?') !== -1) {
         var parametrosGET = url.split('?')[1].split('&');
         console.log('Variables de GET detectadas:');
-        
         // Itera sobre los parámetros de consulta y muestra el nombre y el valor
         for (var i = 0; i < parametrosGET.length; i++) {
             var parametro = parametrosGET[i].split('=');
@@ -16,7 +16,7 @@ function Paginacion() {
             console.log(nombre + ': ' + valor);
             if(nombre == "start"){
                 // PAGINAMOS EL INICIO
-                // Inicio()
+                Inicio()
                 // PONEMOS LA ALERTA QUE QUERAMOS 
                 alertas(1);
                 deleteGet()
@@ -24,6 +24,8 @@ function Paginacion() {
             if (nombre == "id") {
                 console.log("PAGNACION DE LA PELICULA CON SU ID");
                 movie(valor);
+                eventsNavbar()
+
                 // deleteGet()
             }else{
                 // PAGINAMOS EL INICIO
@@ -50,14 +52,12 @@ function deleteGet() {
 // ASIGNACION DE EVENTOS A LOS BOTONES DEL NAV
 function eventsNavbar() {
     // FUNCIONES DE PAGINACION
-    document.getElementById('add').addEventListener("click",addForm)
     document.getElementById('inicio').addEventListener("click",Inicio)
-
-
+    document.getElementById('add').addEventListener("click",addForm)
 
     // EVENTO PARA ELIMINAR VARIABLES DE GET
-    document.getElementById('add').addEventListener("click",deleteGet)
-    document.getElementById('inicio').addEventListener("click",deleteGet)
+    // document.getElementById('add').addEventListener("click",deleteGet)
+    // document.getElementById('inicio').addEventListener("click",deleteGet)
 }
 
 function like_style() {
@@ -159,6 +159,7 @@ function alertas(num) {
     if(num == 1){
         var icon = ""
         var title = "Bienvendio"
+
     }else{
         var icon = "warning"
         var title = "URL desconocida, vigila por donde vas"
@@ -237,24 +238,15 @@ function FormDur() {
         duracion.classList.add('is-valid');
     }
 }
-
 function Formyear() {
-    var year = document.getElementById('year_peli')
+    var year = document.getElementById('year_peli');
     if (year.value < 1896) {
         year.classList.remove('is-valid');
         year.classList.add('is-invalid');
     } else {
-        duracion.classList.remove('is-invalid');
-        duracion.classList.add('is-valid');
+        year.classList.remove('is-invalid');
+        year.classList.add('is-valid');
     }
-}
-
-
-function validarForm(){
-    var nom = document.getElementById('nom_peli').value
-    var genero = document.getElementById('genero_peli'),value
-    var sinopsis = document.getElementById('sinopsis').value
-
 }
 
 function FormSinopsis(){
@@ -270,8 +262,6 @@ function FormSinopsis(){
             nom.classList.remove('is-valid');
             nom.classList.add('is-invalid');
         }
-        // nom.classList.remove('is-invalid');
-        // nom.classList.add('is-valid');
     }
 }
 
@@ -317,6 +307,13 @@ function FormPortada(event) {
         previewImg.src = '../rsc/movie/default.jpg';
     }
 }
+
+// function validarForm(){
+//     var nom = document.getElementById('nom_peli').value
+//     var genero = document.getElementById('genero_peli'),value
+//     var sinopsis = document.getElementById('sinopsis').value
+// }
+
 
 
 

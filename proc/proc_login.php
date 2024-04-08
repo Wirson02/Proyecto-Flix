@@ -25,7 +25,7 @@ if ($stm_consulta ->rowCount() == 1) {
             exit();
         }
 
-        if ($verif['usr_rol'] <= 3) {
+        if ($verif['usr_rol'] >=3) {
             session_start();
             $_SESSION['id'] = $verif['id_usr'];
             $_SESSION['nom'] = $verif['usr_nom'];

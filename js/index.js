@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    Animaciones()//´
+    Animaciones()
     Paginacion()
 });
 
@@ -17,7 +17,6 @@ function Animaciones() {
 function ValForm() {
 }
 
-
 function Paginacion() {
     var url = window.location.href;
     if (url.indexOf('?') !== -1) {
@@ -33,19 +32,7 @@ function Paginacion() {
                 console.log("deteccion de alertas, ".valor);
                 // PONEMOS LA ALERTA QUE QUERAMOS 
                 alertas(valor);
-                return
-            }
-            if (nombre == "id") {
-                console.log("PAGNACION DE LA PELICULA CON SU ID");
                 deleteGet()
-                return
-            }else{
-                // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
-                deleteGet()
-                // PAGINAMOS EL INICIO
-                Inicio()
-                // PONEMOS LA ALERTA QUE QUERAMOS 
-                alertas(2);
                 return
             }
         }
@@ -63,12 +50,20 @@ function alertas(num) {
         var title = "Estamos valorando tu peticion de acceso"
     }
     if (num == 2) {
-        var icon = "error"
+        var icon = "warning"
         var title = "Cuenta Desahbilitada, consulte con un administrador"
     }
     if (num == 3) {
         var icon = "warning"
-        var title = "Revisa las credenciales de inicio de session"
+        var title = "Revisa las credenciales"
+    }
+    if (num == 4) {
+        var icon = "warning"
+        var title = "Debes de iniciar session para acceder"
+    }
+    if (num == 5) {
+        var icon = "success"
+        var title = "Debes de iniciar session para acceder"
     }
 
     const Toast = Swal.mixin({

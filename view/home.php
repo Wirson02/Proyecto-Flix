@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header('Location: ../index.php?alerta=3');
+    header('Location: ../index.php?alerta=4');
 }
 
 ?>
