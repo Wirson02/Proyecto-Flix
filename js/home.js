@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    Paginacion()
-    eventsNavbar()
+    // Paginacion()
+    eventsNavbar();
 });
 
 function Paginacion() {
+    
     var url = window.location.href;
     if (url.indexOf('?') !== -1) {
         var parametrosGET = url.split('?')[1].split('&');
         console.log('Variables de GET detectadas:');
-        // Itera sobre los parámetros de consulta y muestra el nombre y el valor
         for (var i = 0; i < parametrosGET.length; i++) {
             var parametro = parametrosGET[i].split('=');
             var nombre = parametro[0];
@@ -16,25 +16,26 @@ function Paginacion() {
             console.log(nombre + ': ' + valor);
             if(nombre == "start"){
                 // PAGINAMOS EL INICIO
-                Inicio()
-                // PONEMOS LA ALERTA QUE QUERAMOS 
+                Inicio();
                 alertas(1);
-                deleteGet()
+                deleteGet();
+                eventsNavbar();
             }
             if (nombre == "id") {
                 console.log("PAGNACION DE LA PELICULA CON SU ID");
                 movie(valor);
                 eventsNavbar()
-
                 // deleteGet()
-            }else{
-                // PAGINAMOS EL INICIO
-                Inicio()
-                // PONEMOS LA ALERTA QUE QUERAMOS 
-                alertas(2);
-                // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
-                deleteGet()
             }
+
+            // else{
+            //     // PAGINAMOS EL INICIO
+            //     Inicio()
+            //     // PONEMOS LA ALERTA QUE QUERAMOS 
+            //     alertas(2);
+            //     // ELIMINAMOS LAS VARIABLES DE GET QUE INTENTA INSERTAR
+            //     deleteGet()
+            // }
         }
         // Aquí puedes realizar acciones adicionales según tus necesidades
     } else {
@@ -53,13 +54,64 @@ function deleteGet() {
 function eventsNavbar() {
     // FUNCIONES DE PAGINACION
     document.getElementById('inicio').addEventListener("click",Inicio)
+    document.getElementById('inicio').addEventListener("click",deleteGet)
     document.getElementById('favoritos').addEventListener("click",favlist)
-    document.getElementById('add').addEventListener("click",addForm)
-
+    
     // EVENTO PARA ELIMINAR VARIABLES DE GET
-    // document.getElementById('add').addEventListener("click",deleteGet)
-    // document.getElementById('inicio').addEventListener("click",deleteGet)
+    document.getElementById('crud').addEventListener("click",crud)
+    document.getElementById('add').addEventListener("click",addForm)
+    document.getElementById('add').addEventListener("click",deleteGet)
+    
 }
+
+function crud() {
+    fetch("../proc/proc_crud_home.php")
+    .then(texto => texto.text())
+    .then(crud =>{
+        document.getElementById('home').innerHTML = crud
+
+        document.querySelectorAll('.btn-warning').forEach(item => {
+            item.addEventListener('click', event => {
+                usrModificar(item.value);
+            });
+        });
+
+        document.querySelectorAll('.btn-danger').forEach(item => {
+            item.addEventListener('click', event => {
+            usrDelete(item.value);
+            });
+        });
+        
+
+    })
+}
+
+function usrModificar(id) {
+    
+}
+
+function usrDelete(id) {
+    Swal.fire({
+        title: "Estas seguro?",
+        text: "Si lo eliminas no hay vuelta altras",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+        });
+        }
+    });
+
+    // console.log("eliminar usuario con id = " + id)
+}
+
 
 function favlist() {
     fetch("../proc/proc_fav.php")
