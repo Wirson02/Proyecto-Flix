@@ -2,13 +2,25 @@
 include_once('conexion.php');
 
 // MAYOR NUMERO DE LIKES
-$sql = "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5;";
+$sql = "SELECT m.id_movie, m.mvi_nom, m.mvi_desc, m.mvi_dura, m.mvi_porta, m.mvi_year, COUNT(l.id_likes) AS num_likes
+FROM tbl_movie m
+LEFT JOIN tbl_likes l ON m.id_movie = l.id_movie
+GROUP BY m.id_movie
+ORDER BY num_likes DESC
+LIMIT 5;";
+
 // OPCIONES DE TODOS LOS GENEROS DISPONIBLES
 $sql2 = "SELECT * FROM tbl_generos";
+
 // OPCIONES DE AÑOS DE TODAS LAS PELICUALS QUE TENEMOS DISPONIBLES
 $sql3 = "SELECT DISTINCT mvi_year FROM bd_stream.tbl_movie order by mvi_year ASC ;";
+
 // PAGINACIÓN RESTRO DE PELICUAS
-$sql4 = "SELECT (COUNT(*) - 5) AS limite FROM tbl_movie;";
+$sql4 = 'SELECT m.id_movie, m.mvi_nom, m.mvi_desc, m.mvi_dura, m.mvi_porta, m.mvi_year, COUNT(l.id_likes) AS num_likes
+FROM tbl_movie m
+LEFT JOIN tbl_likes l ON m.id_movie = l.id_movie
+GROUP BY m.id_movie
+ORDER BY num_likes DESC LIMIT 25 OFFSET 6;';
 // $sql5= "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5, ;";
 
 try {
@@ -81,10 +93,10 @@ try {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     
     // Asignar el valor a la variable $limite
-    $limite = $result['limite'];
+    // $limite = $result['limite'];
 
     // PAGINACION PARA VER EL RESTO DE PELICULAS OMITIENDO LAS 5 PRIMERAS
-    $sql4 = "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5, $limite";
+    // $sql4 = "SELECT * FROM tbl_movie ORDER BY id_movie ASC LIMIT 5, $limite";
     $stmt = $conn->prepare($sql4);
     $stmt -> execute();
     $result = $stmt->fetchAll();

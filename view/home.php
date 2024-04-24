@@ -51,7 +51,7 @@ if (!isset($_SESSION['id'])) {
                             <i class='bx bx-layer nav__icon'></i>
                             <span class="nav__name">Administrador</span>
                         </a>
-                        <a href="#search" id="add" class="nav__link">
+                        <a id="add" class="nav__link">
                             <i class='bx bx-layer-plus nav__icon' ></i>
                             <span class="nav__name">Añadir Pelicula</span>
                         </a>
@@ -71,65 +71,6 @@ if (!isset($_SESSION['id'])) {
 <!-- FIN NAVBAR -->
 <!-- INICIO TOP 5 -->
     <div id="home" class="slt">
-        <br>
-        <h1>ADMINISTRADOR</h1>
-        <br>
-        <div class="slt">
-            <div class="column-5">
-                <button type="button" id="user_crud" class="btn btn-primary flex"><box-icon name='user'></box-icon> <span>Usuarios</span></button>
-            </div>
-            <div class="column-5">
-                <button type="button" id="movie_crud" class="btn btn-info flex"> <box-icon name='movie-play'></box-icon> <span> Peliculas</span></button>
-            </div>
-            <div class="column-5">
-                <button type="button" id="peti_crud" class="btn btn-warning position-relative">Peticiones<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">20<span class="visually-hidden">unread messages</span></span></button>
-            </div>
-        </div>
-        <div id="perfil" class="slt">
-            <h3>Peliculas</h3>
-            <div class="slt">
-                <table class="table">
-                    <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Sinopsis</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Año</th>
-                
-                <th scope="col">Duración</th>
-                <th scope="col">Portada</th>
-                <th scope="col">Edicion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td  class="table-warning">Blade Runner</td>
-                <td>p como la exigente editora de una revista de moda.p como la exigente editora de una revista de moda.p como la exigente editora de una revista de moda.p como la exigente editora de una revista de moda.p como la exigente editora de una revista de moda.</td>
-                <td>Ciencia Ficción</td>
-                <td>1968</td>
-                <td>182 min</td>
-                <td>12.jpg</td>
-                <td>
-                <button type="button" class="btn btn-warning">Editar</button>
-                <button type="button" class="btn btn-danger">Eliminar</button> <br></td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
-            </tbody>
-            </table>
-            </div>
-        </div> 
     </div>
         <!-- FIN ETIQUETA #HOME -->
 <!---->

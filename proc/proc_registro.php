@@ -21,7 +21,6 @@ try {
     $stmt1 -> bindParam(':user',$user);
     $stmt1 -> execute();
     $res = $stmt1 -> fetchAll();
-    echo $stmt1->rowCount();
     if($stmt1->rowCount()>=1){
         echo"El usuario existe";
         header('Location: '.'../index.php?userExist=true');

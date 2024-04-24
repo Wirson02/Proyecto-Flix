@@ -57,7 +57,7 @@ include_once('conexion.php');
         <p><strong>'.$resultado['mvi_year'].'</strong> / <strong>'.$resultado['gen_nom'].'</strong> / <strong>'.$resultado['mvi_dura'].' min</strong></p>
         <h3>Sinopsis</h3>
         <p>'.$resultado['mvi_desc'].'</p>
-        <div class="position-absolute end-1"><button>Ver Pelicula</button></div>
+        <div class="position-absolute end-1"><button id="sapo" >Ver Pelicula</button></div>
     </div>
         </div>
     </div>

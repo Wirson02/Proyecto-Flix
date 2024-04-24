@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Paginacion()
+    Paginacion()
     eventsNavbar();
 });
 
@@ -18,13 +18,12 @@ function Paginacion() {
                 // PAGINAMOS EL INICIO
                 Inicio();
                 alertas(1);
-                deleteGet();
                 eventsNavbar();
+                deleteGet();
             }
             if (nombre == "id") {
-                console.log("PAGNACION DE LA PELICULA CON SU ID");
                 movie(valor);
-                eventsNavbar()
+                eventsNavbar();
                 // deleteGet()
             }
 
@@ -64,30 +63,205 @@ function eventsNavbar() {
     
 }
 
+function CrudPeti() {
+    const div = document.getElementById('perfil')
+    fetch("../proc/proc_crud_peticiones.php")
+    .then(texto => texto.text())
+    .then(crud =>{
+        div.innerHTML = crud
+        document.querySelectorAll('.acept-peti').forEach(item => {
+            item.addEventListener('click', event => {
+                aceptPeti(item.value);
+            });
+        });
+        document.querySelectorAll('.deneg-peti').forEach(item => {
+            item.addEventListener('click', event => {
+                denegPeticion(item.value);
+            });
+        });
+    })
+}
+
+function aceptPeti(id) {
+    var usr = { 
+        id: id,
+        usr: 1
+    }
+
+    fetch("../proc/proc_change_usr.php",{ method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'datos=' + encodeURIComponent(JSON.stringify(usr))
+    })
+    .then(texto => texto.text())
+    .then(info =>{
+        if (info == "ABLE") {
+            alertas(9);
+            CrudPeti();
+        }else{
+            console.log(info)
+        }
+    })
+}
+
+function denegPeticion(id) {
+    var usr = { 
+        id: id,
+        usr: 2
+    }
+    fetch("../proc/proc_change_usr.php",{ method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'datos=' + encodeURIComponent(JSON.stringify(usr))
+    })
+    .then(texto => texto.text())
+    .then(info =>{
+        if (info == "DISSABLE") {
+            alertas(10);
+            CrudPeti();
+        }else{
+            console.log(info)
+        }
+    })
+}
+
+function CrudMovie() {
+    const div = document.getElementById('perfil')
+    fetch("../proc/proc_crud_movie.php")
+    .then(texto => texto.text())
+    .then(crud =>{
+        div.innerHTML = crud
+        document.querySelectorAll('.editar_mvi').forEach(item => {
+            item.addEventListener('click', event => {
+                mviModifi(item.value);
+            });
+        });
+        document.querySelectorAll('.delete_mvi').forEach(item => {
+            item.addEventListener('click', event => {
+                mviDelete(item.value);
+            });
+        });
+    })
+}
+
+function mviDelete(id) {
+    Swal.fire({
+        title: "Estas seguro?",
+        text: "Si lo eliminas no hay vuelta altras",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var usr = { id: id}
+            fetch("../proc/proc_delete_mvi.php",{ method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'datos=' + encodeURIComponent(JSON.stringify(usr))
+            })
+            .then(contenido => contenido.text())
+            .then(confirmacion => {
+                if (confirmacion == "OK") {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Has eliminado la pelicula.",
+                        icon: "success"
+                    });
+                }else{
+                    Swal.fire({
+                        title: "Hubo un Error!",
+                        text: confirmacion,
+                        icon: "error"
+                    });
+                }
+                crudUser()
+            })
+        }
+    });
+
+}
+
+function crudUser() {
+    fetch("../proc/proc_crud_usr.php")
+    .then(text => text.text())
+    .then(crud =>{
+        document.getElementById('perfil').innerHTML = crud
+        document.querySelectorAll('.editar_usr').forEach(item => {
+            item.addEventListener('click', event => {
+                usrModificar(item.value);
+            });
+        });
+        document.querySelectorAll('.delete_usr').forEach(item => {
+            item.addEventListener('click', event => {
+                usrDelete(item.value);
+            });
+        });
+    })
+}
+
 function crud() {
     fetch("../proc/proc_crud_home.php")
     .then(texto => texto.text())
     .then(crud =>{
         document.getElementById('home').innerHTML = crud
 
-        document.querySelectorAll('.btn-warning').forEach(item => {
-            item.addEventListener('click', event => {
-                usrModificar(item.value);
-            });
-        });
-
-        document.querySelectorAll('.btn-danger').forEach(item => {
-            item.addEventListener('click', event => {
-            usrDelete(item.value);
-            });
-        });
-        
-
+        document.getElementById('user_crud').addEventListener("click",crudUser)
+        document.getElementById('movie_crud').addEventListener("click",CrudMovie)
+        document.getElementById('peti_crud').addEventListener("click",CrudPeti)
+        CrudMovie()
     })
 }
 
+
+
 function usrModificar(id) {
-    
+    var usr = { id: id }
+    fetch("../proc/proc_form_usr.php",{ method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'datos=' + encodeURIComponent(JSON.stringify(usr))
+    })
+    .then(content => content.text())
+    .then(html => {
+        Swal.fire({
+            title: "Edición de usuario",
+            html: html,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                var usr = { 
+                    id: id,
+                    name: document.getElementById('usr-name').value,
+                    apellido: document.getElementById('usr-ape').value,
+                    mail: document.getElementById('usr-mail').value,
+                    pwd: document.getElementById('usr-pwd').value,
+                    rol: document.getElementById('usr-rol').value
+                }
+                fetch("../proc/proc_modifi_usr.php",{ method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'datos=' + encodeURIComponent(JSON.stringify(usr))
+                })
+                .then(texto => texto.texto())
+                .then()
+                
+                Swal.fire("Saved!", "", "success");
+            } else if (result.isDenied) {
+                Swal.fire("Changes are not saved", "", "info");
+            }
+        });
+    })
 }
 
 function usrDelete(id) {
@@ -101,11 +275,30 @@ function usrDelete(id) {
         confirmButtonText: "Si, Eliminar"
     }).then((result) => {
         if (result.isConfirmed) {
-        Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-        });
+            var usr = { id: id}
+            fetch("../proc/proc_delete_usr.php",{ method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'datos=' + encodeURIComponent(JSON.stringify(usr))
+            })
+            .then(contenido => contenido.text())
+            .then(confirmacion => {
+                if (confirmacion == "OK") {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }else{
+                    Swal.fire({
+                        title: "Hubo un Error!",
+                        text: confirmacion,
+                        icon: "error"
+                    });
+                }
+                crudUser()
+            })
         }
     });
 
@@ -180,8 +373,13 @@ function movie(id) {
         document.getElementById('home').innerHTML = texto
         like_style()
         document.getElementById('like-btn').addEventListener("click",like_proc)
+        document.getElementById("sapo").addEventListener("click", function() {
+            window.location.href = "https://www.youtube.com"; // Aquí colocas la URL de YouTube
+        });
     })
 }
+
+
 function like_proc() {
     var id = document.getElementById('like-btn').value;
         var datos = {
@@ -224,6 +422,15 @@ function alertas(num) {
         var title = "Bienvendio"
     }
 
+    if(num == 9){
+        var icon = "success"
+        var title = "Se ha habilitado el acceso"
+    }
+
+    if(num == 10){
+        var icon = "warning"
+        var title = "Se ha denegado el acceso"
+    }
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
