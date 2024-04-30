@@ -56,12 +56,10 @@ try {
                 $stmt -> execute();
 
                 header('Location: ../view/home.php?id='.$verif['id_movie']);
-
             }
         } else {
         }
     }
-
 } catch (PDOException $e){
     // $conn->rollBack();
     echo "Error: ". $e->getMessage() ."";
